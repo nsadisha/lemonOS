@@ -8,5 +8,9 @@ void kmain()
     //determining the length of the string
     unsigned int len = sizeof(str) / sizeof(str[0]);
     
+    //frame builder writing
     fb_write(POSITION, str, len);
+    
+    //serial writing
+    serial_write(0x3F8, str, len);
 }
