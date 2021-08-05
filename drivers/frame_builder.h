@@ -1,4 +1,11 @@
+#ifndef INCLUDE_FRAME_BUFFER_H
+#define INCLUDE_FRAME_BUFFER_H
+
 #include "io.h"
+
+/**Colors**/
+#define FB_GREEN 2
+#define FB_DARK_GREY 8
 
 /** fb_write_cell:
 *  Writes a character with the given foreground and background to position i
@@ -41,3 +48,21 @@ void fb_move_cursor(unsigned short pos)
     outb(FB_COMMAND_PORT, FB_LOW_BYTE_COMMAND);
     outb(FB_DATA_PORT,    pos & 0x00FF);
 }
+
+
+//Writing a buffer
+void fb_write(unsigned int pos, char *buff, unsigned int len)
+{
+    unsigned int currentPos;
+    for(unsigned int i=0; i<(len-1); i++){
+        //setting current position
+    	currentPos = (pos+i)*2;
+    	    	   
+        //writing charactors
+    	fb_write_cell(currentPos, *(buff+i), FB_GREEN, FB_DARK_GREY);
+    }
+    //setting the cursor
+    fb_move_cursor(pos+len-1);
+}
+
+#endif

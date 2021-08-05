@@ -1,11 +1,12 @@
 #include "drivers/frame_builder.h"
 
-/**Colors**/
-#define FB_GREEN 2
-#define FB_DARK_GREY 8
+#define POSITION 0
 
 void kmain()
 {
-    fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
-    fb_move_cursor(01);
+    char str[] = "Hello, Welcome to LemonOS...!!!";
+    //determining the length of the string
+    unsigned int len = sizeof(str) / sizeof(str[0]);
+    
+    fb_write(POSITION, str, len);
 }
