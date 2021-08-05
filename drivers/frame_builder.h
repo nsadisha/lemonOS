@@ -1,5 +1,3 @@
-#include "../io/io.h"
-
 /** fb_write_cell:
 *  Writes a character with the given foreground and background to position i
 *  in the framebuffer.
