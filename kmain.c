@@ -1,5 +1,10 @@
-/* The C function */
-int sum_of_three(int arg1, int arg2, int arg3)
+#include "drivers/frame_builder.h"
+
+/**Colors**/
+#define FB_GREEN 2
+#define FB_DARK_GREY 8
+
+void kmain()
 {
-    return arg1 + arg2 + arg3;
+    fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
 }
