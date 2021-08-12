@@ -1,10 +1,18 @@
+#include "drivers/io.h"
 #include "drivers/frame_builder.h"
 #include "drivers/serial_write.h"
+#include "drivers/gdt.h"
 
 #define POSITION 0
 
+void init(){
+    init_gdt();
+}
+
 void kmain()
 {
+    init();
+
     char str[] = "Hello, Welcome to LemonOS...!!!";
     //determining the length of the string
     unsigned int len = sizeof(str) / sizeof(str[0]);
@@ -13,5 +21,6 @@ void kmain()
     fb_write(POSITION, str, len);
     
     //serial writing
-    serial_write(0x3F8, str, len);
+    char str2[] = "Hello Sadisha Nimsara";
+    serial_write(0x3F8, str2, 21);
 }
