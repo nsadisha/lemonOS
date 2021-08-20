@@ -3,10 +3,14 @@
 #include "drivers/serial_write.h"
 #include "drivers/gdt.h"
 
+#include "drivers/interrupts/interrupts.h"
+
 #define POSITION 0
 
 void init(){
     init_gdt();
+    
+    interrupts_install_idt();
 }
 
 void kmain()
