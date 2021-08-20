@@ -3,7 +3,7 @@
 #include "drivers/serial_write.h"
 #include "drivers/gdt.h"
 
-#include "drivers/interrupts/interrupts.h"
+#include "drivers/interrupts/interrupts.c"
 
 #define POSITION 0
 
