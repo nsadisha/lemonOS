@@ -3,10 +3,15 @@
 #include "drivers/serial_write.h"
 #include "drivers/gdt.h"
 
+#include "drivers/interrupts/interrupts.c"
+
 #define POSITION 0
+#define PORT 0x3F8
 
 void init(){
     init_gdt();
+    
+    interrupts_install_idt();
 }
 
 void kmain()
@@ -21,6 +26,6 @@ void kmain()
     fb_write(POSITION, str, len);
     
     //serial writing
-    char str2[] = "Hello Sadisha Nimsara";
-    serial_write(0x3F8, str2, 21);
+    char str2[] = "Hello Sadisha Nimsara\n";
+    serial_write(PORT, str2, 22);
 }
