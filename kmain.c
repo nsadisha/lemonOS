@@ -12,6 +12,10 @@ void init(){
     init_gdt();
     
     interrupts_install_idt();
+    
+    //configure serial port
+    serial_configure_baud_rate(SERIAL_COM1_BASE, 4);
+    serial_configure_line(SERIAL_COM1_BASE);
 }
 
 void kmain()
@@ -27,5 +31,6 @@ void kmain()
     
     //serial writing
     char str2[] = "Hello Sadisha Nimsara\n";
-    serial_write(PORT, str2, 22);
+    unsigned int s_len = sizeof(str2) / sizeof(str2[0]);
+    serial_write(PORT, str2, s_len);
 }
