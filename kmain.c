@@ -7,15 +7,15 @@
 
 #define POSITION 0
 #define PORT 0x3F8
+#define BAUD_RATE 4
 
 void init(){
+    //configure serial port
+    serial_configure(PORT, BAUD_RATE);
+    
     init_gdt();
     
     interrupts_install_idt();
-    
-    //configure serial port
-    serial_configure_baud_rate(SERIAL_COM1_BASE, 4);
-    serial_configure_line(SERIAL_COM1_BASE);
 }
 
 void kmain()
