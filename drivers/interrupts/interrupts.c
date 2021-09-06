@@ -1,8 +1,8 @@
 #include "interrupts.h"
 #include "../pic/pic.c"
-#include "../io.h"
+#include "../io/io.h"
 
-#include "../serial_write.h"
+#include "../serial_port/serial_write.h"
 #include "../keyboard/keyboard.c"
 //#include "paging.h"
 

@@ -1,7 +1,7 @@
 #ifndef INCLUDE_FRAME_BUFFER_H
 #define INCLUDE_FRAME_BUFFER_H
 
-#include "io.h"
+#include "../io/io.h"
 
 /**Colors**/
 #define FB_GREEN 2
