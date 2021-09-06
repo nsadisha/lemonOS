@@ -4,7 +4,7 @@
 
 #include "../serial_port/serial_write.h"
 #include "../keyboard/keyboard.c"
-//#include "paging.h"
+#include "../../mm/paging/paging.h"
 
 #define KEYBOARD_MAX_ASCII 83
 
@@ -79,7 +79,7 @@ void interrupt_handler(__attribute__((unused)) struct cpu_state cpu, unsigned in
 			break;
 		
 		case INTERRUPTS_PAGING:
-			//page_fault();	
+			page_fault();	
 			break;
 		default:
 			break;
