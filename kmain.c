@@ -4,6 +4,7 @@
 #include "drivers/gdt.h"
 #include "drivers/interrupts/interrupts.c"
 #include "multiboot.h"
+#include "mm/paging/paging.c"
 
 #define POSITION 0
 #define PORT 0x3F8
@@ -18,6 +19,9 @@ void init(){
     
     //initialize interrupt descriptor table
     interrupts_install_idt();
+    
+    //initialize paging
+    init_paging();
 }
 
 void kmain(unsigned int ebx){
