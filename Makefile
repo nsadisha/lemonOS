@@ -1,4 +1,4 @@
-    OBJECTS = loader.o kmain.o io.o gdt_asm.o  idt.o interrupt_handler.o drivers/interrupts/isr/isr.o paging_enable.o mm/heap/kheap.o utils/common/common.o
+    OBJECTS = loader.o kmain.o drivers/io/io.o gdt_asm.o drivers/interrupts/idt.o drivers/interrupts/interrupt_handler.o drivers/interrupts/isr/isr.o mm/paging/paging_enable.o mm/heap/kheap.o utils/common/common.o
     CC = gcc
     CFLAGS = -m32 -nostdlib -fno-builtin -fno-stack-protector \
              -Wno-unused -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -masm=intel 
