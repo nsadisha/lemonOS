@@ -1,5 +1,7 @@
 ENTRY(loader)                /* the name of the entry label */
 
+kernel_start = .;
+
 SECTIONS {
     . = 0x00100000;          /* the code should be loaded at 1 MB */
 

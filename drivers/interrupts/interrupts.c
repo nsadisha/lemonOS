@@ -79,7 +79,7 @@ void interrupt_handler(__attribute__((unused)) struct cpu_state cpu, unsigned in
 			break;
 		
 		case INTERRUPTS_PAGING:
-			page_fault();	
+			//page_fault();	
 			break;
 		default:
 			break;
