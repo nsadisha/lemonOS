@@ -75,6 +75,8 @@ void init_gdt() {
   gdt_set_gate(0, 0, 0, 0, 0);                // Null segment
   gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // Kernel Code segment
   gdt_set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF); // Kernel Data segment
+  gdt_set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF); // User Code segment
+  gdt_set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF); // User Data segment
 
   gdt_flush((u32int)&gdt_ptr);
 }

@@ -6,6 +6,8 @@
 #include "multiboot.h"
 #include "mm/paging/paging.c"
 
+#include "user_modes/user_mode.h"
+
 #define POSITION 0
 #define PORT 0x3F8
 #define BAUD_RATE 4
@@ -44,10 +46,17 @@ void kmain(unsigned int ebx){
         unsigned int s_len = sizeof(str2) / sizeof(str2[0]);
         serial_write(PORT, str2, s_len);
         
+        //switch to user mode
+        char uModeStr[] = "Switching to user mode\n";
+        unsigned int uModeLen = sizeof(uModeStr) / sizeof(uModeStr[0]);
+        serial_write(PORT, uModeStr, uModeLen);
+        // Switch to User mode
+   	switch_to_user_mode();
+        
         typedef void (*call_module_t)(void);
         /* ... */
         call_module_t start_program = (call_module_t) address_of_module;
-        start_program();
+        start_program();       
         /* we'll never get here, unless the module code returns */
     }else{
         char errorMsg[] = "Error: Number of modules loaded is not equal to 1.\n";
